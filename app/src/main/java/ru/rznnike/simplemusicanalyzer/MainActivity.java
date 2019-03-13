@@ -4,7 +4,6 @@ import android.content.pm.PackageManager;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -86,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             File directory = new File(directoryPath);
             getFilePathsRecursive(filePaths, directory);
 
+            buttonSearch.setEnabled(false);
             ListAdapter adapter = new ArrayAdapter<>(this,
                     android.R.layout.simple_list_item_1, new String[] {"Идет поиск..."});
             listView.setAdapter(adapter);
@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
             ListAdapter adapter = new ArrayAdapter<>(this,
                     android.R.layout.simple_list_item_1, filteredFilesInfo);
             listView.setAdapter(adapter);
+            buttonSearch.setEnabled(true);
         });
     }
 
